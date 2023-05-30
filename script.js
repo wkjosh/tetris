@@ -3,6 +3,9 @@ var input = document.querySelector("input");
 //this looks for what key is down and calls the function
 //"isKeyDown()" whan a key is pressed/
 input.addEventListener("keydown", isKeyDown)
+var activeTetromino = "stick"
+var cubeArray = [4,5,14,15];
+var stickArray = [4,14,24,34]
 
 
 function makeButtons() {
@@ -13,23 +16,59 @@ function makeButtons() {
       btn.setAttribute("id", i);
       document.getElementById("theGrid").appendChild(btn);
   }//end For loop
-  makeCube()
+  makeStick()
 }//end function makeButton 
 
 function makeCube(){
-  document.getElementById("4").style.backgroundColor = "yellow"
-  document.getElementById("5").style.backgroundColor = "yellow"
-  document.getElementById("14").style.backgroundColor = "yellow"
-  document.getElementById("15").style.backgroundColor = "yellow"
+  for(i=0 ;i<4; i++){
+    document.getElementById(cubeArray[i]).style.backgroundColor = "yellow"  
+  }  
+}
+function makeStick(){
+  for(i=0 ;i<4; i++){
+    document.getElementById(stickArray[i]).style.backgroundColor = "blue"  
+  }  
 }
 function isKeyDown(e){
-  console.log(e.code)
   if(e.code == "ArrowLeft"){
-     document.getElementById("4").style.backgroundColor = "yellow"
-    document.getElementById("5").style.backgroundColor = "grey"
-    document.getElementById("14").style.backgroundColor = "yellow"
-    document.getElementById("15").style.backgroundColor = "grey"
-     document.getElementById("3").style.backgroundColor = "yellow"
-    document.getElementById("13").style.backgroundColor = "yellow"
+    if(activeTetromino == "stick"){
+      moveLeftStick();
+    }else if (moveLeftStick == "cube"){
+      moveLeftCube();
+    }else if (moveLeftStick == "el"){
+      moveLeftEl();
+    }else if (moveLeftStick == "reverseEl"){
+      moveLeftReverseEl();
+    }else if (moveLeftStick == "es"){
+      moveLeftEs();
+    }else if (moveLeftStick == "reverseEs"){
+      moveLeftReverseEs();
+    }else if (moveLeftStick == "tee"){
+      moveLeftTee();
   }
+}
+function moveLeftStick(){
+  for(i=0; i <4; i++){
+      document.getElementById(stickArray[i]).style.backgroundColor = "black"
+      stickArray[i] -= 1;
+      document.getElementById(stickArray[i]).style.backgroundColor = "blue"
+    }
+}
+function moveLeftCube(){
+  
+}
+function moveLeftEl(){
+  
+}
+function moveLeftReverseEl(){
+  
+}
+function moveLeftEs(){
+  
+}
+function moveLeftReverseEs(){
+  
+}
+function moveLeftTee(){
+  
 }
