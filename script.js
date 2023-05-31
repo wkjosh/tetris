@@ -4,6 +4,9 @@ var input = document.querySelector("input");
 //"isKeyDown()" whan a key is pressed/
 input.addEventListener("keydown", isKeyDown)
 var activeTetromino = "stick"
+
+//make an array for each tetromino
+//position 4 is the top middle square
 var cubeArray = [4,5,14,15];
 var stickArray = [4,14,24,34]
 
