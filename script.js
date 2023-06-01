@@ -5,7 +5,8 @@ var input = document.querySelector("input");
 input.addEventListener("keydown", isKeyDown)
 var activeTetromino 
 var cubeArray = [4,5,14,15,"yellow"];
-var stickArray = [4,14,24,34,"blue"]
+var stickArray = [4,14,24,34,"blue"];
+var elArray = [4,14,24,25,"orange"]
 function makeButtons() {
   for (var i = 0; i < 200; i++) {
       var btn = document.createElement("button");
@@ -14,23 +15,19 @@ function makeButtons() {
       btn.setAttribute("id", i);
       document.getElementById("theGrid").appendChild(btn);
   }//end For loop
-  makeCube()
-  activeTetromino = cubeArray
+  //makeCube()
+  activeTetromino = elArray
+  placeTetromino(activeTetromino)
 }//end function makeButton 
-function makeCube(){
-  for(i=0 ;i<4; i++){
-    document.getElementById(cubeArray[i]).style.backgroundColor = "yellow"  
-  }  
-}
-function makeStick(){
-  for(i=0 ;i<4; i++){
-    document.getElementById(stickArray[i]).style.backgroundColor = "blue"  
-  }  
-}
 function isKeyDown(e){
   if(e.code == "ArrowLeft"){
    moveTetrominoLeft(activeTetromino);
   }
+}
+function placeTetromino(thisTetromino){
+  for(i=0; i <4; i++){
+      document.getElementById(thisTetromino[i]).style.backgroundColor = thisTetromino[4]
+    }
 }
 function moveTetrominoLeft(thisTetromino){
   for(i=0; i <4; i++){
