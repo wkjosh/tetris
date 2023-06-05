@@ -4,14 +4,13 @@ var input = document.querySelector("input");
 //"isKeyDown()" whan a key is pressed/
 input.addEventListener("keydown", isKeyDown)
 var activeTetromino 
-var cubeArray = [4,5,14,15,"yellow"];
-var stickArray = [4,14,24,34,"blue"];
-var elArray = [4,14,24,25,"orange"];
-var reverseElArray = [4,14,24,23,"cyan"];
-var esArray = [4,5,13,14,"green"];
-var reverseEsArray = [4,5,15,16,"white"];
-var teeArray = [5,14,15,16,"purple"]
-
+var cubeArray = [4,5,14,15,"yellow","cube"];
+var stickArray = [4,14,24,34,"blue","stick","vertical"];
+var elArray = [4,14,24,25,"orange","el","vertical"];
+var reverseElArray = [4,14,24,23,"cyan","reverseEl","vertical"];
+var esArray = [4,5,13,14,"green","es","horizontal"];
+var reverseEsArray = [4,5,15,16,"grey","reverseEs","horizontal"];
+var teeArray = [5,14,15,16,"purple","tee","knobUp"]
 function makeButtons() {
   for (var i = 0; i < 200; i++) {
       var btn = document.createElement("button");
@@ -19,9 +18,10 @@ function makeButtons() {
       btn.setAttribute("class", "btnClass");
       btn.setAttribute("id", i);
       document.getElementById("theGrid").appendChild(btn);
+      document.getElementById(i).textContent = i
   }//end For loop
   //makeCube()
-  activeTetromino = teeArray
+  activeTetromino = reverseEsArray
   placeTetromino(activeTetromino)
 }//end function makeButton 
 function isKeyDown(e){
@@ -30,6 +30,9 @@ function isKeyDown(e){
   }
   if(e.code == "ArrowRight"){
    moveTetrominoRight(activeTetromino);
+  }
+  if(e.code == "ArrowUp"){
+    rotateTetromino(activeTetromino)
   }
 }
 function placeTetromino(thisTetromino){
@@ -50,4 +53,64 @@ function moveTetrominoRight(thisTetromino){
       thisTetromino[i] += 1;
       document.getElementById(thisTetromino[i]).style.backgroundColor = thisTetromino[4]
     }
+}
+function rotateTetromino(thisTetromino){
+ if(thisTetromino[5] == "stick"){
+   rotateStick(thisTetromino)
+ }else if(thisTetromino[5] == "el"){
+   rotateEl(thisTetromino)
+ }else if(thisTetromino[5] == "reverseEl"){
+   rotateReverseEl(thisTetromino)
+ }else if(thisTetromino[5] == "es"){
+   rotateEs(thisTetromino)
+ }else if(thisTetromino[5] == "reverseEs"){
+    rotateReverseEs(thisTetromino)
+ }else if(thisTetromino[5]== "tee"){
+   rotateTee(thisTetromino)
+ }
+    
+}
+function rotateStick(thisTetromino){
+   if(thisTetromino[6]=="vertical"){
+    document.getElementById(thisTetromino[0]).style.backgroundColor = "black"
+    thisTetromino[0] += 9
+    document.getElementById(thisTetromino[0]).style.backgroundColor = thisTetromino[4]
+
+   document.getElementById(thisTetromino[2]).style.backgroundColor = "black"
+    thisTetromino[2] -= 9
+    document.getElementById(thisTetromino[2]).style.backgroundColor = thisTetromino[4]
+
+   document.getElementById(thisTetromino[3]).style.backgroundColor = "black"
+    thisTetromino[3] -= 18
+    document.getElementById(thisTetromino[3]).style.backgroundColor = thisTetromino[4]
+    thisTetromino[6] = "horizontal"
+  }else{
+     document.getElementById(thisTetromino[0]).style.backgroundColor = "black"
+    thisTetromino[0] -= 9
+    document.getElementById(thisTetromino[0]).style.backgroundColor = thisTetromino[4]
+
+     document.getElementById(thisTetromino[2]).style.backgroundColor = "black"
+    thisTetromino[2] += 9
+    document.getElementById(thisTetromino[2]).style.backgroundColor = thisTetromino[4]
+
+   document.getElementById(thisTetromino[3]).style.backgroundColor = "black"
+    thisTetromino[3] += 18
+    document.getElementById(thisTetromino[3]).style.backgroundColor = thisTetromino[4]
+    thisTetromino[6] = "vertical"
+  }
+}
+function rotateEl(thisTetromino){
+  
+}
+function rotateReverseEl(thisTetromino){
+  
+}
+function  rotateEs(thisTetromino) {
+  
+}
+function  rotateReverseEs(thisTetromino) {
+  
+}
+function rotateTee(thisTetromino){
+  
 }
