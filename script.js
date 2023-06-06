@@ -7,7 +7,7 @@ var activeTetromino
 var cubeArray = [4,5,14,15,"yellow","cube"];
 var stickArray = [4,14,24,34,"blue","stick","vertical"];
 var elArray = [4,14,24,25,"orange","el","vertical"];
-var reverseElArray = [4,14,24,23,"cyan","reverseEl","vertical"];
+var reverseElArray = [4,14,23,24,"cyan","reverseEl","vertical"];
 var esArray = [4,5,13,14,"green","es","horizontal"];
 var reverseEsArray = [4,5,15,16,"grey","reverseEs","horizontal"];
 var teeArray = [5,14,15,16,"purple","tee","knobUp"]
@@ -21,7 +21,7 @@ function makeButtons() {
       document.getElementById(i).textContent = i
   }//end For loop
   //makeCube()
-  activeTetromino = reverseEsArray
+  activeTetromino = teeArray
   placeTetromino(activeTetromino)
 }//end function makeButton 
 function isKeyDown(e){
@@ -33,6 +33,9 @@ function isKeyDown(e){
   }
   if(e.code == "ArrowUp"){
     rotateTetromino(activeTetromino)
+  }
+  if(e.code == "ArrowDown"){
+    moveTetrominoDown(activeTetromino)
   }
 }
 function placeTetromino(thisTetromino){
@@ -53,6 +56,17 @@ function moveTetrominoRight(thisTetromino){
       thisTetromino[i] += 1;
       document.getElementById(thisTetromino[i]).style.backgroundColor = thisTetromino[4]
     }
+}
+function moveTetrominoDown(thisTetromino){
+  //backward through the array
+  //Turn Black
+  //add 10
+  //change to Tetromino Color
+  for(i=3 ; i>-1 ; i--){
+    document.getElementById(thisTetromino[i]).style.backgroundColor = "black"
+    thisTetromino[i] += 10
+    document.getElementById(thisTetromino[i]).style.backgroundColor = thisTetromino[4]
+  }
 }
 function rotateTetromino(thisTetromino){
  if(thisTetromino[5] == "stick"){
