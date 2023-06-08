@@ -3,7 +3,7 @@ var input = document.querySelector("input");
 //this looks for what key is down and calls the function
 //"isKeyDown()" whan a key is pressed/
 input.addEventListener("keydown", isKeyDown)
-var activeTetromino 
+var activeTetromino = []
 var cubeArray = [4,5,14,15,"yellow","cube"];
 var stickArray = [4,14,24,34,"blue","stick","vertical"];
 var elArray = [4,14,24,25,"orange","el","vertical"];
@@ -21,7 +21,10 @@ function makeButtons() {
       document.getElementById(i).textContent = i
   }//end For loop
   //makeCube()
-  activeTetromino = teeArray
+ 
+  for(i=0 ; i<4 ; i++){
+    activeTetromino[i] = teeArray[i]
+  }
   placeTetromino(activeTetromino)
 }//end function makeButton 
 function isKeyDown(e){
@@ -38,93 +41,93 @@ function isKeyDown(e){
     moveTetrominoDown(activeTetromino)
   }
 }
-function placeTetromino(thisTetromino){
+function placeTetromino(){
   for(i=0; i <4; i++){
-      document.getElementById(thisTetromino[i]).style.backgroundColor = thisTetromino[4]
+      document.getElementById(activeTetromino[i]).style.backgroundColor = activeTetromino[4]
     }
 }
-function moveTetrominoLeft(thisTetromino){
+function moveTetrominoLeft(){
   for(i=0; i <4; i++){
-      document.getElementById(thisTetromino[i]).style.backgroundColor = "black"
-      thisTetromino[i] -= 1;
-      document.getElementById(thisTetromino[i]).style.backgroundColor = thisTetromino[4]
+      document.getElementById(activeTetromino[i]).style.backgroundColor = "black"
+      activeTetromino[i] -= 1;
+      document.getElementById(activeTetromino[i]).style.backgroundColor = activeTetromino[4]
     }
 }
-function moveTetrominoRight(thisTetromino){
+function moveTetrominoRight(){
   for(i=3; i >-1; i--){
-      document.getElementById(thisTetromino[i]).style.backgroundColor = "black"
-      thisTetromino[i] += 1;
-      document.getElementById(thisTetromino[i]).style.backgroundColor = thisTetromino[4]
+      document.getElementById(activeTetromino[i]).style.backgroundColor = "black"
+      activeTetromino[i] += 1;
+      document.getElementById(activeTetromino[i]).style.backgroundColor = activeTetromino[4]
     }
 }
-function moveTetrominoDown(thisTetromino){
+function moveTetrominoDown(){
   //backward through the array
   //Turn Black
   //add 10
   //change to Tetromino Color
   for(i=3 ; i>-1 ; i--){
-    document.getElementById(thisTetromino[i]).style.backgroundColor = "black"
-    thisTetromino[i] += 10
-    document.getElementById(thisTetromino[i]).style.backgroundColor = thisTetromino[4]
+    document.getElementById(activeTetromino[i]).style.backgroundColor = "black"
+    activeTetromino[i] += 10
+    document.getElementById(activeTetromino[i]).style.backgroundColor = activeTetromino[4]
   }
 }
-function rotateTetromino(thisTetromino){
- if(thisTetromino[5] == "stick"){
-   rotateStick(thisTetromino)
- }else if(thisTetromino[5] == "el"){
-   rotateEl(thisTetromino)
- }else if(thisTetromino[5] == "reverseEl"){
-   rotateReverseEl(thisTetromino)
- }else if(thisTetromino[5] == "es"){
-   rotateEs(thisTetromino)
- }else if(thisTetromino[5] == "reverseEs"){
-    rotateReverseEs(thisTetromino)
- }else if(thisTetromino[5]== "tee"){
-   rotateTee(thisTetromino)
+function rotateTetromino(){
+ if(activeTetromino[5] == "stick"){
+   rotateStick(activeTetromino)
+ }else if(activeTetromino[5] == "el"){
+   rotateEl(activeTetromino)
+ }else if(activeTetromino[5] == "reverseEl"){
+   rotateReverseEl(activeTetromino)
+ }else if(activeTetromino[5] == "es"){
+   rotateEs(activeTetromino)
+ }else if(activeTetromino[5] == "reverseEs"){
+    rotateReverseEs(activeTetromino)
+ }else if(activeTetromino[5]== "tee"){
+   rotateTee(activeTetromino)
  }
     
 }
-function rotateStick(thisTetromino){
-   if(thisTetromino[6]=="vertical"){
-    document.getElementById(thisTetromino[0]).style.backgroundColor = "black"
-    thisTetromino[0] += 9
-    document.getElementById(thisTetromino[0]).style.backgroundColor = thisTetromino[4]
+function rotateStick(){
+   if(activeTetromino[6]=="vertical"){
+    document.getElementById(activeTetromino[0]).style.backgroundColor = "black"
+    activeTetromino[0] += 9
+    document.getElementById(activeTetromino[0]).style.backgroundColor = activeTetromino[4]
 
-   document.getElementById(thisTetromino[2]).style.backgroundColor = "black"
-    thisTetromino[2] -= 9
-    document.getElementById(thisTetromino[2]).style.backgroundColor = thisTetromino[4]
+   document.getElementById(activeTetromino[2]).style.backgroundColor = "black"
+    activeTetromino[2] -= 9
+    document.getElementById(activeTetromino[2]).style.backgroundColor = activeTetromino[4]
 
-   document.getElementById(thisTetromino[3]).style.backgroundColor = "black"
-    thisTetromino[3] -= 18
-    document.getElementById(thisTetromino[3]).style.backgroundColor = thisTetromino[4]
-    thisTetromino[6] = "horizontal"
+   document.getElementById(activeTetromino[3]).style.backgroundColor = "black"
+    activeTetromino[3] -= 18
+    document.getElementById(activeTetromino[3]).style.backgroundColor = activeTetromino[4]
+    activeTetromino[6] = "horizontal"
   }else{
-     document.getElementById(thisTetromino[0]).style.backgroundColor = "black"
-    thisTetromino[0] -= 9
-    document.getElementById(thisTetromino[0]).style.backgroundColor = thisTetromino[4]
+     document.getElementById(activeTetromino[0]).style.backgroundColor = "black"
+    activeTetromino[0] -= 9
+    document.getElementById(activeTetromino[0]).style.backgroundColor = activeTetromino[4]
 
-     document.getElementById(thisTetromino[2]).style.backgroundColor = "black"
-    thisTetromino[2] += 9
-    document.getElementById(thisTetromino[2]).style.backgroundColor = thisTetromino[4]
+     document.getElementById(activeTetromino[2]).style.backgroundColor = "black"
+    activeTetromino[2] += 9
+    document.getElementById(activeTetromino[2]).style.backgroundColor = activeTetromino[4]
 
-   document.getElementById(thisTetromino[3]).style.backgroundColor = "black"
-    thisTetromino[3] += 18
-    document.getElementById(thisTetromino[3]).style.backgroundColor = thisTetromino[4]
-    thisTetromino[6] = "vertical"
+   document.getElementById(activeTetromino[3]).style.backgroundColor = "black"
+    activeTetromino[3] += 18
+    document.getElementById(activeTetromino[3]).style.backgroundColor = activeTetromino[4]
+    activeTetromino[6] = "vertical"
   }
 }
-function rotateEl(thisTetromino){
+function rotateEl(){
   
 }
-function rotateReverseEl(thisTetromino){
+function rotateReverseEl(){
   
 }
-function  rotateEs(thisTetromino) {
+function  rotateEs() {
   
 }
-function  rotateReverseEs(thisTetromino) {
+function  rotateReverseEs() {
   
 }
-function rotateTee(thisTetromino){
+function rotateTee(){
   
 }
