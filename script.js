@@ -22,10 +22,11 @@ function makeButtons() {
   }//end For loop
   //makeCube()
  
-  for(i=0 ; i<4 ; i++){
-    activeTetromino[i] = teeArray[i]
+  for(i=0 ; i<6 ; i++){
+    activeTetromino[i] = stickArray[i]
+    console.log(activeTetromino[i])
   }
-  placeTetromino(activeTetromino)
+  placeTetromino()
 }//end function makeButton 
 function isKeyDown(e){
   if(e.code == "ArrowLeft"){
@@ -44,6 +45,7 @@ function isKeyDown(e){
 function placeTetromino(){
   for(i=0; i <4; i++){
       document.getElementById(activeTetromino[i]).style.backgroundColor = activeTetromino[4]
+    
     }
 }
 function moveTetrominoLeft(){
