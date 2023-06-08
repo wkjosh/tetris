@@ -1,0 +1,78 @@
+function rotateEl(thisTetromino){
+  if(thisTetromino[6]=="posOne"){
+    document.getElementById(thisTetromino[0]).style.backgroundColor = "lightblue"
+    thisTetromino[0] += 9
+    //13
+    document.getElementById(thisTetromino[0]).style.backgroundColor = thisTetromino[4]
+
+   document.getElementById(thisTetromino[2]).style.backgroundColor = "lightblue"
+    thisTetromino[2] -= 9
+    //15
+    document.getElementById(thisTetromino[2]).style.backgroundColor = thisTetromino[4]
+
+   document.getElementById(thisTetromino[3]).style.backgroundColor = "lightblue"
+    thisTetromino[3] -= 20
+    //5
+    document.getElementById(thisTetromino[3]).style.backgroundColor = thisTetromino[4]
+    thisTetromino[6] = "posTwo"
+    console.log
+  }else if(thisTetromino[6]=="posTwo"){ 
+    {
+     document.getElementById(thisTetromino[0]).style.backgroundColor = "lightblue"
+    thisTetromino[0] += 11
+      //24
+    document.getElementById(thisTetromino[0]).style.backgroundColor = thisTetromino[4]
+
+      // document.getElementById(thisTetromino[1]).style.backgroundColor = "lightblue"
+      // thisTetromino[1] -= 
+
+     document.getElementById(thisTetromino[2]).style.backgroundColor = "lightblue"
+    thisTetromino[2] -= 11
+      //4
+    document.getElementById(thisTetromino[2]).style.backgroundColor = thisTetromino[4]
+
+   document.getElementById(thisTetromino[3]).style.backgroundColor = "lightblue"
+    thisTetromino[3] -= 2
+      //3
+    document.getElementById(thisTetromino[3]).style.backgroundColor = thisTetromino[4]
+    thisTetromino[6] = "posThree"
+    }  
+  }else if(thisTetromino[6]=="posThree"){
+    document.getElementById(thisTetromino[0]).style.backgroundColor = "lightblue"
+    thisTetromino[0] -= 9
+    //15
+    document.getElementById(thisTetromino[0]).style.backgroundColor = thisTetromino[4]
+
+      // document.getElementById(thisTetromino[1]).style.backgroundColor = "lightblue"
+      // thisTetromino[1] -= 
+
+     document.getElementById(thisTetromino[2]).style.backgroundColor = "lightblue"
+    thisTetromino[2] += 9
+    //13
+    document.getElementById(thisTetromino[2]).style.backgroundColor = thisTetromino[4]
+
+   document.getElementById(thisTetromino[3]).style.backgroundColor = "lightblue"
+    thisTetromino[3] += 20
+    //23
+    document.getElementById(thisTetromino[3]).style.backgroundColor = thisTetromino[4]
+    thisTetromino[6] = "posFour"
+    
+  }else if(thisTetromino[6]=="posFour"){
+    document.getElementById(thisTetromino[0]).style.backgroundColor = "lightblue"
+    thisTetromino[0] -= 11
+    //4
+    document.getElementById(thisTetromino[0]).style.backgroundColor = thisTetromino[4]
+
+      // document.getElementById(thisTetromino[1]).style.backgroundColor = "lightblue"
+      // thisTetromino[1] -= 
+
+     document.getElementById(thisTetromino[2]).style.backgroundColor = "lightblue"
+    thisTetromino[2] += 11
+    document.getElementById(thisTetromino[2]).style.backgroundColor = thisTetromino[4]
+
+   document.getElementById(thisTetromino[3]).style.backgroundColor = "lightblue"
+    thisTetromino[3] += 2
+    document.getElementById(thisTetromino[3]).style.backgroundColor = thisTetromino[4]
+    thisTetromino[6] = "posOne"
+}
+}
